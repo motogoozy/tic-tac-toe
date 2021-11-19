@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { mount } from 'enzyme';
+import App from './App.jsx';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+  let component;
+
+  beforeEach(() => {
+    component = mount(<App />);
+  });
+
+  it('renders app', () => {
+    expect(component.find('div.App').length).toBe(1);
+  });
 });

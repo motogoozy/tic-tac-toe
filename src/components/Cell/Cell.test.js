@@ -9,8 +9,13 @@ describe('Cell', () => {
   });
 
   it('hover class gets applied to cell on hover', () => {
-    component = mount(<Cell id={1} />);
     component.simulate('mouseenter');
     expect(component.find('div.hover').length).toBe(1);
+  });
+
+  it('hover class is removed on mouse leave', () => {
+    component.simulate('mouseenter');
+    component.simulate('mouseleave');
+    expect(component.find('div.hover').length).toBe(0);
   });
 });

@@ -1,0 +1,16 @@
+:root {
+  --background: #181a1f;
+  --teal: #37dec7;
+  --pink: #d591bd;
+  --border: 1px solid white;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

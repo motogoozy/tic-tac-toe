@@ -1,0 +1,26 @@
+.cell {
+  height: 150px;
+  width: 150px;
+  padding: 1rem;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.cell:nth-child(-n + 3) {
+  border-bottom: var(--border);
+}
+
+.cell:nth-last-child(-n + 3) {
+  border-top: var(--border);
+}
+
+.cell:nth-child(3n + 2) {
+  border-left: var(--border);
+  border-right: var(--border);
+}

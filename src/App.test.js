@@ -11,4 +11,8 @@ describe('App', () => {
   it('renders app', () => {
     expect(component.find('div.App').length).toBe(1);
   });
+
+  it('renders board component', () => {
+    expect(component.find('div.board').length).toBe(1);
+  });
 });

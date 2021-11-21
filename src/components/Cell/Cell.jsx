@@ -11,6 +11,7 @@ export default function Cell() {
         hover,
       })}
       onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     ></div>
   );
 }

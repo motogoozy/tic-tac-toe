@@ -48,4 +48,8 @@ describe('App', () => {
     component.find(Cell).at(0).simulate('click');
     expect(component.find(Cell).at(0).props().oSelected).toBe(false);
   });
+
+  it('should render button container', () => {
+    expect(component.find('div.button-container').length).toBe(1);
+  });
 });

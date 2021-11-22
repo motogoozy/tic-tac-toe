@@ -53,6 +53,10 @@ function App() {
     <div className='App'>
       <Board currentPlayer={currentPlayer} onSelect={onSelect} xSelections={xSelections} oSelections={oSelections} />
       <p className={'message'}>{message.toUpperCase()}</p>
+      <div className='button-container'>
+        <p>UNDO</p>
+        <p>RESET</p>
+      </div>
     </div>
   );
 }

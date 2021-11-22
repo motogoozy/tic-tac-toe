@@ -42,4 +42,10 @@ describe('App', () => {
     });
     expect(component.find('p.message').text()).toEqual("IT'S A TIE!");
   });
+
+  it('should not allow selection if cell is already selected', () => {
+    component.find(Cell).at(0).simulate('click');
+    component.find(Cell).at(0).simulate('click');
+    expect(component.find(Cell).at(0).props().oSelected).toBe(false);
+  });
 });

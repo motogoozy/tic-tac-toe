@@ -89,7 +89,7 @@ function App() {
           </p>
         )}
         <p className='reset-button' onClick={reset}>
-          RESET
+          {gameOver ? 'PLAY AGAIN' : 'RESET'}
         </p>
       </div>
     </div>

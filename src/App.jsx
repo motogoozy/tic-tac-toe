@@ -83,9 +83,11 @@ function App() {
       />
       <p className={'message'}>{message.toUpperCase()}</p>
       <div className='button-container'>
-        <p className='undo-button' onClick={undo}>
-          UNDO
-        </p>
+        {!gameOver && (
+          <p className='undo-button' onClick={undo}>
+            UNDO
+          </p>
+        )}
         <p className='reset-button' onClick={reset}>
           RESET
         </p>

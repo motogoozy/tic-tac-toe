@@ -24,4 +24,10 @@ describe('Cell', () => {
     component.simulate('mouseenter');
     expect(component.find('.cell').hasClass('x')).toBe(true);
   });
+
+  it('adds player class on click', () => {
+    component = shallow(<Cell currentPlayer={'x'} />);
+    component.simulate('click');
+    expect(component.find('.cell').hasClass('x')).toBe(false);
+  });
 });

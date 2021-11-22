@@ -4,7 +4,7 @@ import Board from './components/Board/Board';
 import { PLAYERS, WINS } from './constants';
 
 function App() {
-  const [currentPlayer, setCurrentPlayer] = useState(null);
+  const [currentPlayer, setCurrentPlayer] = useState(PLAYERS.X);
   const [xSelections, setXSelections] = useState([]);
   const [oSelections, setOSelections] = useState([]);
   const [message, setMessage] = useState('');
@@ -14,8 +14,10 @@ function App() {
   }, [currentPlayer]);
 
   useEffect(() => {
+    if (xSelections.length === 0 && oSelections.length === 0) return;
+
     if (isWin()) {
-      setMessage(`Player ${currentPlayer} wins!`.toUpperCase());
+      setMessage(`Player ${currentPlayer} wins!`);
     } else if (isTie()) {
       setMessage("It's a tie!");
     } else {
@@ -48,6 +50,12 @@ function App() {
     }
   };
 
+  const reset = () => {
+    setXSelections([]);
+    setOSelections([]);
+    setCurrentPlayer(PLAYERS.X);
+  };
+
   const onSelect = id => {
     if (!isAlreadySelected(id)) {
       if (currentPlayer === PLAYERS.X) {
@@ -63,10 +71,12 @@ function App() {
       <Board currentPlayer={currentPlayer} onSelect={onSelect} xSelections={xSelections} oSelections={oSelections} />
       <p className={'message'}>{message.toUpperCase()}</p>
       <div className='button-container'>
-        <p onClick={undo} className='undo-button'>
+        <p className='undo-button' onClick={undo}>
           UNDO
         </p>
-        <p>RESET</p>
+        <p className='reset-button' onClick={reset}>
+          RESET
+        </p>
       </div>
     </div>
   );

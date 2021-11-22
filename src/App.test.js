@@ -26,4 +26,12 @@ describe('App', () => {
     component.find(Cell).at(3).simulate('click');
     expect(component.find('p.message').text()).toEqual("PLAYER O'S TURN");
   });
+
+  it('renders winning message if a player wins', () => {
+    const clicks = [0, 2, 3, 5, 6];
+    clicks.forEach(idx => {
+      component.find(Cell).at(idx).simulate('click');
+      expect(component.find('p.message').text()).toEqual('PLAYER X WINS');
+    });
+  });
 });

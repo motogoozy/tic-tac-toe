@@ -14,7 +14,6 @@ function App() {
   }, [currentPlayer]);
 
   useEffect(() => {
-    // check win
     if (isWin()) {
       setMessage(`Player ${currentPlayer} wins!`.toUpperCase());
     } else if (isTie()) {
@@ -40,6 +39,8 @@ function App() {
   const isAlreadySelected = id => xSelections.includes(id) || oSelections.includes(id);
 
   const undo = () => {
+    if (xSelections.length === 0 && oSelections.length === 0) return;
+
     if (currentPlayer === PLAYERS.O) {
       setXSelections(selections => selections.slice(0, -1));
     } else {

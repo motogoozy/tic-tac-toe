@@ -17,11 +17,11 @@ function App() {
     // check win
     if (isWin()) {
       setMessage(`Player ${currentPlayer} wins!`.toUpperCase());
+    } else if (isTie()) {
+      setMessage("It's a tie!");
     } else {
       switchTurns();
     }
-
-    // check tie
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [xSelections, oSelections]);
@@ -35,11 +35,17 @@ function App() {
     return WINS.some(winningCells => winningCells.every(cell => selections.includes(cell)));
   };
 
+  const isTie = () => !isWin() && xSelections.length + oSelections.length === 9;
+
+  const isAlreadySelected = id => xSelections.includes(id) || oSelections.includes(id);
+
   const onSelect = id => {
-    if (currentPlayer === PLAYERS.X) {
-      setXSelections(arr => [...arr, id]);
-    } else {
-      setOSelections(arr => [...arr, id]);
+    if (!isAlreadySelected(id)) {
+      if (currentPlayer === PLAYERS.X) {
+        setXSelections(arr => [...arr, id]);
+      } else {
+        setOSelections(arr => [...arr, id]);
+      }
     }
   };
 

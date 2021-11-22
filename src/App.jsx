@@ -16,9 +16,16 @@ function App() {
     }
   };
 
+  const renderMessage = () => {
+    let message = '';
+    message = `Player ${currentPlayer}'s turn`;
+    return message.toUpperCase();
+  };
+
   return (
     <div className='App'>
       <Board currentPlayer={currentPlayer} onSelect={onSelect} xSelections={xSelections} oSelections={oSelections} />
+      <p className={'message'}>{renderMessage()}</p>
     </div>
   );
 }

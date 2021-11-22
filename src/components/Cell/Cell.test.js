@@ -35,6 +35,12 @@ describe('Cell', () => {
 
   it('should not add hover class if selected prop is true', () => {
     component = shallow(<Cell {...props} xSelected={true} />);
-    expect(component.find('.cell').hasClass('hover')).toBe(false);
+    expect(component.find('.item-container').hasClass('hover')).toBe(false);
+  });
+
+  it('should not apply hover class if game is over', () => {
+    component = shallow(<Cell {...props} gameOver={true} />);
+    component.simulate('mouseenter');
+    expect(component.find('.item-container').hasClass('hover')).toBe(false);
   });
 });

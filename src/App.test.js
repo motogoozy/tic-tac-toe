@@ -34,4 +34,12 @@ describe('App', () => {
     });
     expect(component.find('p.message').text()).toEqual('PLAYER X WINS!');
   });
+
+  it('renders tie message if game ends in a tie', () => {
+    const clicks = [0, 1, 2, 6, 7, 8, 3, 4, 5];
+    clicks.forEach(idx => {
+      component.find(Cell).at(idx).simulate('click');
+    });
+    expect(component.find('p.message').text()).toEqual("IT'S A TIE!");
+  });
 });

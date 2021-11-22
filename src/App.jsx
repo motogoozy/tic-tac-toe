@@ -39,6 +39,14 @@ function App() {
 
   const isAlreadySelected = id => xSelections.includes(id) || oSelections.includes(id);
 
+  const undo = () => {
+    if (currentPlayer === PLAYERS.O) {
+      setXSelections(selections => selections.slice(0, -1));
+    } else {
+      setOSelections(selections => selections.slice(0, -1));
+    }
+  };
+
   const onSelect = id => {
     if (!isAlreadySelected(id)) {
       if (currentPlayer === PLAYERS.X) {
@@ -54,7 +62,9 @@ function App() {
       <Board currentPlayer={currentPlayer} onSelect={onSelect} xSelections={xSelections} oSelections={oSelections} />
       <p className={'message'}>{message.toUpperCase()}</p>
       <div className='button-container'>
-        <p>UNDO</p>
+        <p onClick={undo} className='undo-button'>
+          UNDO
+        </p>
         <p>RESET</p>
       </div>
     </div>

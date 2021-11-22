@@ -63,4 +63,13 @@ describe('App', () => {
     component.find('p.undo-button').simulate('click');
     expect(component.find('p.message').text()).toEqual("PLAYER X'S TURN");
   });
+
+  it('should reset game when reset button is clicked', () => {
+    const clicks = [0, 1, 2];
+    clicks.forEach(idx => {
+      component.find(Cell).at(idx).simulate('click');
+    });
+    component.find('p.reset-button').simulate('click');
+    expect(component.find('p.message').text()).toEqual("PLAYER X'S TURN");
+  });
 });

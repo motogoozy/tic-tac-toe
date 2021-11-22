@@ -8,12 +8,17 @@ function App() {
   const [xSelections, setXSelections] = useState([]);
   const [oSelections, setOSelections] = useState([]);
 
+  const switchTurns = () => {
+    setCurrentPlayer(cp => (cp === PLAYERS.X ? PLAYERS.O : PLAYERS.X));
+  };
+
   const onSelect = id => {
     if (currentPlayer === PLAYERS.X) {
       setXSelections(arr => [...arr, id]);
     } else {
       setOSelections(arr => [...arr, id]);
     }
+    switchTurns();
   };
 
   const renderMessage = () => {

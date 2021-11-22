@@ -11,9 +11,11 @@ export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected
     onSelect(i);
   };
 
+  const isSelected = xSelected || oSelected;
+
   const cellClasses = classNames('cell', {
-    x: xSelected || (hover && currentPlayer === PLAYERS.X),
-    o: oSelected || (hover && currentPlayer === PLAYERS.O),
+    x: xSelected || (!isSelected && hover && currentPlayer === PLAYERS.X),
+    o: oSelected || (!isSelected && hover && currentPlayer === PLAYERS.O),
   });
 
   return (

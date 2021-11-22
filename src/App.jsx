@@ -4,7 +4,7 @@ import Board from './components/Board/Board';
 import { PLAYERS, WINS } from './constants';
 
 function App() {
-  const [currentPlayer, setCurrentPlayer] = useState(PLAYERS.X);
+  const [currentPlayer, setCurrentPlayer] = useState(null);
   const [xSelections, setXSelections] = useState([]);
   const [oSelections, setOSelections] = useState([]);
   const [message, setMessage] = useState('');
@@ -15,8 +15,6 @@ function App() {
   }, [currentPlayer]);
 
   useEffect(() => {
-    if (xSelections.length === 0 && oSelections.length === 0) return;
-
     if (isWin()) {
       setMessage(`Player ${currentPlayer} wins!`);
       setGameOver(true);
@@ -44,7 +42,6 @@ function App() {
   const isAlreadySelected = id => xSelections.includes(id) || oSelections.includes(id);
 
   const undo = () => {
-    if (gameOver) return;
     if (xSelections.length === 0 && oSelections.length === 0) return;
 
     if (currentPlayer === PLAYERS.O) {
@@ -57,19 +54,17 @@ function App() {
   const reset = () => {
     setXSelections([]);
     setOSelections([]);
-    setCurrentPlayer(PLAYERS.X);
+    setCurrentPlayer(null);
     setGameOver(false);
-    setMessage(`Player ${PLAYERS.X}'s turn`);
   };
 
   const onSelect = id => {
-    if (gameOver) return;
-    if (!isAlreadySelected(id)) {
-      if (currentPlayer === PLAYERS.X) {
-        setXSelections(arr => [...arr, id]);
-      } else {
-        setOSelections(arr => [...arr, id]);
-      }
+    if (gameOver || isAlreadySelected(id)) return;
+
+    if (currentPlayer === PLAYERS.X) {
+      setXSelections(arr => [...arr, id]);
+    } else {
+      setOSelections(arr => [...arr, id]);
     }
   };
 

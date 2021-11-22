@@ -32,4 +32,9 @@ describe('Cell', () => {
     component = shallow(<Cell {...props} xSelected={true} />);
     expect(component.find('.cell').hasClass('x')).toBe(true);
   });
+
+  it('should not add hover class if selected prop is true', () => {
+    component = shallow(<Cell {...props} xSelected={true} />);
+    expect(component.find('.cell').hasClass('hover')).toBe(false);
+  });
 });

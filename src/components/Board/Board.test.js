@@ -5,7 +5,7 @@ describe('Board', () => {
   let component;
 
   beforeEach(() => {
-    component = mount(<Board />);
+    component = mount(<Board xSelections={[]} oSelections={[]} />);
   });
 
   it('renders 9 cell components', () => {

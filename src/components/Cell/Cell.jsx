@@ -11,16 +11,26 @@ export default function Cell({ id, currentPlayer, onSelect }) {
     onSelect(i);
   };
 
+  const cellClasses = classNames('cell', {
+    x: hover && currentPlayer === PLAYERS.X,
+    o: hover && currentPlayer === PLAYERS.O,
+  });
+
   return (
     <div
-      className={classNames('cell', {
-        x: hover && currentPlayer === PLAYERS.X,
-        o: hover && currentPlayer === PLAYERS.O,
-        hover,
-      })}
+      className={cellClasses}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={() => handleSelection(id)}
-    ></div>
+    >
+      <div
+        className={classNames('item-container', {
+          hover,
+        })}
+      >
+        <div />
+        <div />
+      </div>
+    </div>
   );
 }

@@ -8,6 +8,7 @@ function App() {
   const [xSelections, setXSelections] = useState([]);
   const [oSelections, setOSelections] = useState([]);
   const [message, setMessage] = useState('');
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     setMessage(`Player ${currentPlayer}'s turn`);
@@ -18,8 +19,10 @@ function App() {
 
     if (isWin()) {
       setMessage(`Player ${currentPlayer} wins!`);
+      setGameOver(true);
     } else if (isTie()) {
       setMessage("It's a tie!");
+      setGameOver(true);
     } else {
       switchTurns();
     }
@@ -41,6 +44,7 @@ function App() {
   const isAlreadySelected = id => xSelections.includes(id) || oSelections.includes(id);
 
   const undo = () => {
+    if (gameOver) return;
     if (xSelections.length === 0 && oSelections.length === 0) return;
 
     if (currentPlayer === PLAYERS.O) {
@@ -57,6 +61,7 @@ function App() {
   };
 
   const onSelect = id => {
+    if (gameOver) return;
     if (!isAlreadySelected(id)) {
       if (currentPlayer === PLAYERS.X) {
         setXSelections(arr => [...arr, id]);

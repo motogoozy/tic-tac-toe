@@ -72,4 +72,12 @@ describe('App', () => {
     component.find('p.reset-button').simulate('click');
     expect(component.find('p.message').text()).toEqual("PLAYER X'S TURN");
   });
+
+  it('should not allow selection if game is over', () => {
+    const clicks = [0, 2, 3, 5, 6, 8];
+    clicks.forEach(idx => {
+      component.find(Cell).at(idx).simulate('click');
+    });
+    expect(component.find('div.cell').at(8).hasClass('x')).toBe(false);
+  });
 });

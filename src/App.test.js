@@ -58,4 +58,9 @@ describe('App', () => {
     component.find('p.undo-button').simulate('click');
     expect(component.find('div.cell').at(0).hasClass('x')).toBe(false);
   });
+
+  it('undo click should not trigger selection or player switch if selections are empty', () => {
+    component.find('p.undo-button').simulate('click');
+    expect(component.find('p.message').text()).toEqual("PLAYER X'S TURN");
+  });
 });

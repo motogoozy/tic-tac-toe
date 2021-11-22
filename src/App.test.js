@@ -31,7 +31,7 @@ describe('App', () => {
     const clicks = [0, 2, 3, 5, 6];
     clicks.forEach(idx => {
       component.find(Cell).at(idx).simulate('click');
-      expect(component.find('p.message').text()).toEqual('PLAYER X WINS');
     });
+    expect(component.find('p.message').text()).toEqual('PLAYER X WINS!');
   });
 });

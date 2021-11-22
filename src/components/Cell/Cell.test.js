@@ -3,9 +3,13 @@ import Cell from './Cell.jsx';
 
 describe('Cell', () => {
   let component;
+  const props = {
+    currentPlayer: 'x',
+    onSelect: jest.fn(),
+  };
 
   beforeEach(() => {
-    component = shallow(<Cell />);
+    component = shallow(<Cell {...props} />);
   });
 
   it('hover class gets applied to cell on hover', () => {
@@ -20,14 +24,12 @@ describe('Cell', () => {
   });
 
   it('adds player class on hover', () => {
-    component = shallow(<Cell currentPlayer={'x'} />);
     component.simulate('mouseenter');
     expect(component.find('.cell').hasClass('x')).toBe(true);
   });
 
-  it('adds player class on click', () => {
-    component = shallow(<Cell currentPlayer={'x'} />);
-    component.simulate('click');
-    expect(component.find('.cell').hasClass('x')).toBe(false);
+  it('should add player class if selected prop is true', () => {
+    component = shallow(<Cell {...props} xSelected={true} />);
+    expect(component.find('.cell').hasClass('x')).toBe(true);
   });
 });

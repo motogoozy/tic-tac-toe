@@ -25,7 +25,7 @@ export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected
     >
       <div
         className={classNames('item-container', {
-          hover,
+          hover: hover && !xSelected && !oSelected,
         })}
       >
         <div />

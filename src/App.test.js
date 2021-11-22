@@ -52,4 +52,10 @@ describe('App', () => {
   it('should render button container', () => {
     expect(component.find('div.button-container').length).toBe(1);
   });
+
+  it('should revert most recent selection on undo click', () => {
+    component.find(Cell).at(0).simulate('click');
+    component.find('p.undo-button').simulate('click');
+    expect(component.find('div.cell').at(0).hasClass('x')).toBe(false);
+  });
 });

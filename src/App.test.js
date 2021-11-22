@@ -80,4 +80,12 @@ describe('App', () => {
     });
     expect(component.find('div.cell').at(8).hasClass('x')).toBe(false);
   });
+
+  it('should not render undo button if game is over', () => {
+    const clicks = [0, 2, 3, 5, 6];
+    clicks.forEach(idx => {
+      component.find(Cell).at(idx).simulate('click');
+    });
+    expect(component.find('p.undo-button').length).toBe(0);
+  });
 });

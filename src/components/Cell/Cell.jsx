@@ -3,7 +3,7 @@ import './Cell.css';
 import classNames from 'classnames';
 import { PLAYERS } from '../../constants';
 
-export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected }) {
+export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected, gameOver }) {
   const [hover, setHover] = useState(false);
 
   const handleSelection = i => {
@@ -14,8 +14,8 @@ export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected
   const isSelected = xSelected || oSelected;
 
   const cellClasses = classNames('cell', {
-    x: xSelected || (!isSelected && hover && currentPlayer === PLAYERS.X),
-    o: oSelected || (!isSelected && hover && currentPlayer === PLAYERS.O),
+    x: xSelected || (!isSelected && hover && currentPlayer === PLAYERS.X && !gameOver),
+    o: oSelected || (!isSelected && hover && currentPlayer === PLAYERS.O && !gameOver),
   });
 
   return (
@@ -27,7 +27,7 @@ export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected
     >
       <div
         className={classNames('item-container', {
-          hover: hover && !xSelected && !oSelected,
+          hover: hover && !xSelected && !oSelected && !gameOver,
         })}
       >
         <div />

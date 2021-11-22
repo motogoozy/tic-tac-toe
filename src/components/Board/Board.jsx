@@ -1,7 +1,7 @@
 import './Board.css';
 import Cell from '../Cell/Cell';
 
-export default function Board({ currentPlayer, onSelect, xSelections, oSelections }) {
+export default function Board({ currentPlayer, onSelect, xSelections, oSelections, gameOver }) {
   const renderCells = () => {
     const cells = [];
 
@@ -17,6 +17,7 @@ export default function Board({ currentPlayer, onSelect, xSelections, oSelection
           onSelect={onSelect}
           xSelected={xSelected}
           oSelected={oSelected}
+          gameOver={gameOver}
         />
       );
     }

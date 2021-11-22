@@ -58,6 +58,7 @@ function App() {
     setXSelections([]);
     setOSelections([]);
     setCurrentPlayer(PLAYERS.X);
+    setGameOver(false);
   };
 
   const onSelect = id => {
@@ -73,7 +74,13 @@ function App() {
 
   return (
     <div className='App'>
-      <Board currentPlayer={currentPlayer} onSelect={onSelect} xSelections={xSelections} oSelections={oSelections} />
+      <Board
+        currentPlayer={currentPlayer}
+        onSelect={onSelect}
+        xSelections={xSelections}
+        oSelections={oSelections}
+        gameOver={gameOver}
+      />
       <p className={'message'}>{message.toUpperCase()}</p>
       <div className='button-container'>
         <p className='undo-button' onClick={undo}>

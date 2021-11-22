@@ -29,6 +29,7 @@ export default function Cell({ id, currentPlayer, onSelect, xSelected, oSelected
         className={classNames('item-container', {
           hover: hover && !xSelected && !oSelected && !gameOver,
         })}
+        style={{ opacity: hover && !xSelected && !oSelected && !gameOver ? '50%' : '100%' }}
       >
         <div />
         <div />

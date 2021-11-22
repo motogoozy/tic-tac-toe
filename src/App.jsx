@@ -59,6 +59,7 @@ function App() {
     setOSelections([]);
     setCurrentPlayer(PLAYERS.X);
     setGameOver(false);
+    setMessage(`Player ${PLAYERS.X}'s turn`);
   };
 
   const onSelect = id => {

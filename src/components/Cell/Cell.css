@@ -24,3 +24,54 @@
   border-left: var(--border);
   border-right: var(--border);
 }
+
+.cell > .item-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.x > .item-container > div {
+  height: calc(100% * 1.2);
+  width: 1rem;
+  position: absolute;
+  background-color: var(--pink);
+  box-shadow: 0 0 0.1rem var(--pink), inset 0 0 0.1rem var(--pink), 0 0 0.5rem var(--pink), inset 0 0 0.5rem var(--pink),
+    0 0 1rem var(--pink), inset 0 0 1rem var(--pink);
+}
+
+.x > .item-container > div:first-child {
+  transform: rotate(45deg);
+}
+
+.x > .item-container > div:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.o > .item-container > div:first-child {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-color: var(--teal);
+  box-shadow: 0 0 0.1rem var(--teal), inset 0 0 0.1rem var(--teal), 0 0 0.5rem var(--teal), inset 0 0 0.5rem var(--teal),
+    0 0 1rem var(--teal), inset 0 0 1rem var(--teal);
+}
+
+.o > .item-container > div:nth-child(2) {
+  height: calc(100% - 2.25rem);
+  width: calc(100% - 2.25rem);
+  border-radius: 50%;
+  background-color: var(--background);
+  box-shadow: inset 0 0 1rem var(--teal);
+  z-index: 2;
+}
+
+.hover {
+  opacity: 50%;
+  cursor: pointer;
+}

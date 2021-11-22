@@ -20,4 +20,10 @@ describe('App', () => {
   it('renders message element', () => {
     expect(component.find('p.message').length).toBe(1);
   });
+
+  it('prompts player on their turn', () => {
+    expect(component.find('p.message').text()).toEqual("PLAYER X'S TURN");
+    component.find(Cell).at(3).simulate('click');
+    expect(component.find('p.message').text()).toEqual("PLAYER O'S TURN");
+  });
 });
